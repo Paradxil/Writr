@@ -9,6 +9,9 @@
             </div>
         </div>
         <router-view :key="$route.fullPath"/>
+        <div class="footer">
+            <a href="https://github.com/Paradxil/Writr">View this code on GitHub.</a>
+        </div>
     </div>
 </template>
 
@@ -85,6 +88,15 @@ body {
 }
 
 #nav a.router-link-exact-active {
+}
+
+.footer {
+    padding: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-2);
 }
 
 button {

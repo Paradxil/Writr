@@ -206,7 +206,7 @@ export default {
     }
 
     .currentuser {
-        border-bottom: 2px solid var(--color-2);
+        border-left: 5px solid var(--color-2);
     }
 
     .story-line p {
