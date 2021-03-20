@@ -5,9 +5,10 @@
             <div id="nav">
                 <router-link to="/">Home</router-link>
                 <router-link to="/view/false">Write</router-link>
+                <router-link to="/view/true">New</router-link>
             </div>
         </div>
-        <router-view/>
+        <router-view :key="$route.fullPath"/>
     </div>
 </template>
 

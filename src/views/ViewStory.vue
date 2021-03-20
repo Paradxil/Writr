@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="story-view-wrapper">
-            <div class="controls">
+            <div class="controls" v-if="$route.params.new!=='true'">
                 <button title="Load a random story." @click="getNextStory()">Random</button>
             </div>
             <StoryView v-if="$route.params.key||storykey||$route.params.new==='true'" :storyid="$route.params.key||storykey" :createnew="$route.params.new==='true'"/>
@@ -36,16 +36,16 @@ export default {
         StoryView
     },
     created() {
-        if(this.$route.params.key === null || this.$route.params.key === undefined && this.$route.params.new === 'false') {
+        if((this.$route.params.key === null || this.$route.params.key === undefined) && this.$route.params.new === 'false') {
             this.getNextStory();
         }
     },
     methods: {
         getNextStory() {
+            var prevStoryKey = this.storykey;
             var nextStoryRef = firebase.database().ref('stories').orderByKey();
 
             if(this.storykey !== null) {
-                console.log(this.storykey);
                 nextStoryRef = firebase.database().ref('stories').orderByKey().startAfter(this.storykey);
             }
 
@@ -76,7 +76,7 @@ export default {
                         });
                     });
 
-                    if(this.storykey !== null) {
+                    if(this.storykey !== prevStoryKey) {
                         return true;
                     }
                 });

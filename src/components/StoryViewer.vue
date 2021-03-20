@@ -2,10 +2,10 @@
     <div class="story-view">
         <div class="story-title">
             <input autocomplete="off" :disabled="!canedit" id="story-title" placeholder="Enter title..." v-model="storyTitle" class="invisible-input">
-            <LikeButton :likeskey="storykey+'-s'"/>
+            <LikeButton :likeskey="storykey+'-s'" v-if="$route.params.new!=='true'"/>
         </div>
         <div class="story-lines">
-            <div class='story-line' v-for="line in lines" :key="line.key">
+            <div class='story-line' :class="{currentuser: line.user===$root.$data.user.uid}" :title="line.user===$root.$data.user.uid?'You wrote this, yay!':''" v-for="line in lines" :key="line.key">
                 <div class="line-text"><p>{{line.text}}</p></div>
                 <LikeButton :likeskey="line.key+'-l'"/>
             </div>
@@ -75,9 +75,12 @@ export default {
 
                 if(!this.canedit) {
                     this.message = {
-                        text: "Sorry, you can't edit the same story twice in a row!",
+                        text: "Sorry, you can't edit the same story twice in a row.",
                         error: false
                     };
+                }
+                else {
+                    this.message = null;
                 }
             }, (err)=> {
                 this.message = {
@@ -200,6 +203,10 @@ export default {
         border-radius: 2px;
         transition: background-color 0.25s;
         text-align: justify;
+    }
+
+    .currentuser {
+        border-bottom: 2px solid var(--color-2);
     }
 
     .story-line p {

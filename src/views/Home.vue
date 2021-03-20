@@ -5,19 +5,19 @@
             <div class="tagline">One Line at a Time</div>
             <div class="features">
                 <div class="feature">
-                    <div class="feature-title"><icon-base :class={liked} name="edit-2" /></div>
+                    <div class="feature-title"><icon-base name="edit-2" /></div>
                     <div class="feature-content">
                         Take turns writing lines in a story.
                     </div>
                 </div>
                 <div class="feature">
-                    <div class="feature-title"><icon-base :class={liked} name="clock" /></div>
+                    <div class="feature-title"><icon-base name="clock" /></div>
                     <div class="feature-content">
                         View updates to the story in real time.
                     </div>
                 </div>
                 <div class="feature">
-                    <div class="feature-title"><icon-base :class={liked} name="heart" /></div>
+                    <div class="feature-title"><icon-base name="heart" /></div>
                     <div class="feature-content">
                         Like stories and individual lines.
                     </div>
